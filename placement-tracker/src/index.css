@@ -1,0 +1,17 @@
+html {
+  scroll-behavior: smooth;
+}
+
+button,
+select,
+input {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.9;
+}
