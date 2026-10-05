@@ -1,0 +1,10 @@
+*{box-sizing:border-box}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#d8cbb8;
+  color:#302820
+}
+
+a{color:inherit}
