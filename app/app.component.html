@@ -1,0 +1,170 @@
+<div class="container">
+
+  <!-- CONTACT FORM -->
+  <div *ngIf="!successMessage">
+
+    <h2>Contact Form</h2>
+
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+
+      <div class="name-row">
+
+        <div class="field">
+          <label>First Name</label>
+          <input type="text" formControlName="firstName">
+
+          <div class="error"
+            *ngIf="contactForm.get('firstName')?.invalid &&
+            (contactForm.get('firstName')?.touched || submitted)">
+
+            <span *ngIf="contactForm.get('firstName')?.errors?.['required']">
+              First name is required
+            </span>
+
+            <span *ngIf="contactForm.get('firstName')?.errors?.['pattern']">
+              Only alphabets are allowed. No digits or spaces.
+            </span>
+
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label>Middle Name</label>
+          <input type="text" formControlName="middleName">
+
+          <div class="error"
+            *ngIf="contactForm.get('middleName')?.invalid &&
+            (contactForm.get('middleName')?.touched || submitted)">
+
+            <span *ngIf="contactForm.get('middleName')?.errors?.['pattern']">
+              Only alphabets are allowed. No digits or spaces.
+            </span>
+
+          </div>
+        </div>
+
+
+        <div class="field">
+          <label>Last Name</label>
+          <input type="text" formControlName="lastName">
+
+          <div class="error"
+            *ngIf="contactForm.get('lastName')?.invalid &&
+            (contactForm.get('lastName')?.touched || submitted)">
+
+            <span *ngIf="contactForm.get('lastName')?.errors?.['required']">
+              Last name is required
+            </span>
+
+            <span *ngIf="contactForm.get('lastName')?.errors?.['pattern']">
+              Only alphabets are allowed. No digits or spaces.
+            </span>
+
+          </div>
+        </div>
+
+      </div>
+
+
+      <div class="field">
+        <label>Email</label>
+        <input type="email" formControlName="email">
+
+        <div class="error"
+          *ngIf="contactForm.get('email')?.invalid &&
+          (contactForm.get('email')?.touched || submitted)">
+
+          <span *ngIf="contactForm.get('email')?.errors?.['required']">
+            Email is required
+          </span>
+
+          <span *ngIf="
+            contactForm.get('email')?.errors?.['email'] ||
+            contactForm.get('email')?.errors?.['pattern']">
+            Enter a valid Gmail address ending with @gmail.com
+          </span>
+
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label>Mobile Number</label>
+        <input type="text" formControlName="mobile">
+
+        <div class="error"
+          *ngIf="contactForm.get('mobile')?.invalid &&
+          (contactForm.get('mobile')?.touched || submitted)">
+
+          <span *ngIf="contactForm.get('mobile')?.errors?.['required']">
+            Mobile number is required
+          </span>
+
+          <span *ngIf="contactForm.get('mobile')?.errors?.['pattern']">
+            Mobile number must contain exactly 10 digits
+          </span>
+
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label>Subject</label>
+        <input type="text" formControlName="subject">
+
+        <div class="error"
+          *ngIf="contactForm.get('subject')?.invalid &&
+          (contactForm.get('subject')?.touched || submitted)">
+
+          <span *ngIf="contactForm.get('subject')?.errors?.['required']">
+            Subject is required
+          </span>
+
+        </div>
+      </div>
+
+
+      <div class="field">
+        <label>Message</label>
+        <textarea rows="5" formControlName="message"></textarea>
+
+        <div class="error"
+          *ngIf="contactForm.get('message')?.invalid &&
+          (contactForm.get('message')?.touched || submitted)">
+
+          <span *ngIf="contactForm.get('message')?.errors?.['required']">
+            Message is required
+          </span>
+
+          <span *ngIf="contactForm.get('message')?.errors?.['minlength']">
+            Message must contain at least 10 characters
+          </span>
+
+        </div>
+      </div>
+
+
+      <button type="submit">
+        Submit
+      </button>
+
+    </form>
+
+  </div>
+
+
+  <!-- SUCCESS SCREEN -->
+  <div class="success-box" *ngIf="successMessage">
+
+    <h2>Form Submitted Successfully</h2>
+
+    <p>Your contact form has been submitted successfully.</p>
+
+    <button type="button" (click)="fillAnotherForm()">
+      Fill Another Form
+    </button>
+
+  </div>
+
+</div>
